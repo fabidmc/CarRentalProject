@@ -33,7 +33,7 @@ public class CarRentalApplication {
 			System.out.println("Connected");
 			//return conn;
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			System.out.println("BLA BLA");
 		}
 
