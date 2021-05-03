@@ -8,18 +8,21 @@ public class Reservation {
     private String Reservation_ID;
     private int Car_ID;
     private int Customer_ID;
+    private int idCategory;
     private double totalAmount;
     private LocalDateTime pickupDate;
     private LocalDateTime returnDate;
 
 
-    public Reservation(String Reservation_ID, int Car_ID, int Customer_ID, double totalAmount, LocalDateTime pickupDate, LocalDateTime returnDate){
-        this.Reservation_ID = Reservation_ID;
-        this.Car_ID = Car_ID;
-        this.Customer_ID = Customer_ID;
+    public Reservation(String reservation_ID, int car_ID, int customer_ID, int idCategory, double totalAmount, LocalDateTime pickupDate, LocalDateTime returnDate) {
+        Reservation_ID = reservation_ID;
+        Car_ID = car_ID;
+        Customer_ID = customer_ID;
+        this.idCategory = idCategory;
         this.totalAmount = totalAmount;
         this.pickupDate = pickupDate;
         this.returnDate = returnDate;
+
     }
 
     public String getReservation_ID() {
@@ -46,6 +49,14 @@ public class Reservation {
         Customer_ID = customer_ID;
     }
 
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
+    }
+
     public double getTotalAmount() {
         return totalAmount;
     }
@@ -68,5 +79,18 @@ public class Reservation {
 
     public void setReturnDate(LocalDateTime returnDate) {
         this.returnDate = returnDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "Reservation_ID='" + Reservation_ID + '\'' +
+                ", Car_ID=" + Car_ID +
+                ", Customer_ID=" + Customer_ID +
+                ", idCategory=" + idCategory +
+                ", totalAmount=" + totalAmount +
+                ", pickupDate=" + pickupDate +
+                ", returnDate=" + returnDate +
+                '}';
     }
 }

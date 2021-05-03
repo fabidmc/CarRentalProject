@@ -1,8 +1,5 @@
 package com.DelaMora.CarRental.models;
 
-import java.util.*;
-import java.io.*;
-
 public class Customer {
 
     private int Customer_ID;
@@ -11,7 +8,6 @@ public class Customer {
     private String mobile,email;
     private String state;
     private String country;
-    private String address;
 
 
     public Customer() {
@@ -21,7 +17,6 @@ public class Customer {
         mobile = "";
         state = "";
         country = "";
-        address = "";
         email = "";
     }
 
@@ -47,32 +42,60 @@ public class Customer {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public String getMobile() {
         return mobile;
     }
 
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getState() {
         return state;
     }
 
-
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public String getCountry() {
         return country;
     }
 
-
-
-    public String getAddress() {
-        return address;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "Customer_ID=" + Customer_ID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }
