@@ -1,58 +1,134 @@
 package com.DelaMora.CarRental.models;
 
+import javax.persistence.*;
+import java.io.Serializable;
 
-public class Car {
+@Entity
+@Table(name = "CAR")
+public class Car implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @Column(name = "CAR_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long carId;
+
+    @Column(name = "BRAND")
+    private String brand;
+
+    @Column(name = "MODEL")
+    private String model;
+
+    @ManyToOne(targetEntity = Category.class)
+    @JoinColumn(name="ID_CATEGORY")
+    private Category CatId ;
+
+    @Column(name = "PRICE")
+    private Integer pricePerDay;
+
+    @Column(name = "AVAILABILITY")
+    private boolean av;
 
 
-    private int Car_ID;
-    private String Brand;
-    private String Model;
-    private int idCategory;
-    private double priceForOneDay;
-    private boolean availability;
-
-    public Car(int car_ID, String Brand, String Model, int idCategory, double priceForOneDay, boolean availability) {
-        this.Car_ID = car_ID;
-        this.Brand = Brand;
-        this.Model = Model;
-        this.idCategory = idCategory;
-        this.priceForOneDay = priceForOneDay;
-        this.availability = availability;
+    public Long getCarId() {
+        return carId;
     }
 
-    public int getCar_ID() {
-        return Car_ID;
+    public void setCarId(Long carId) {
+        this.carId = carId;
     }
 
     public String getBrand() {
-        return Brand;
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModel() {
-        return Model;
+        return model;
     }
 
-    public int getIdCategory() {
-        return idCategory;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public double getPriceForOneDay() {
-        return priceForOneDay;
+
+    public Category getCatId() {
+        return CatId;
     }
 
-    public boolean isAvailability() {
-        return availability;
+    public void setCatId(Category catId) {
+        CatId = catId;
+    }
+
+    public Integer getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(Integer pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
+
+
+    public boolean isAv() {
+        return av ;
+    }
+
+    public void setAv(boolean av) {
+        this.av = av;
     }
 
     @Override
     public String toString() {
         return "Car{" +
-                "Car_ID=" + Car_ID +
-                ", Brand='" + Brand + '\'' +
-                ", Model='" + Model + '\'' +
-                ", idCategory=" + idCategory +
-                ", priceForOneDay=" + priceForOneDay +
-                ", availability=" + availability +
+                "carId=" + carId +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", CatId=" + CatId +
+                ", pricePerDay=" + pricePerDay +
+                ", av=" + av +
                 '}';
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
