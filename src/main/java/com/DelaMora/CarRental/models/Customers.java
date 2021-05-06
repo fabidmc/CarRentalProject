@@ -1,10 +1,12 @@
 package com.DelaMora.CarRental.models;
 
+//import org.springframework.data.relational.core.mapping.Table;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 
-@Entity
+@Entity(name = "CUSTOMERS")
 @Table(name = "CUSTOMERS")
 public class Customers implements Serializable {
 
@@ -48,6 +50,9 @@ public class Customers implements Serializable {
         this.email = email;
     }
 
+    public Customers(){
+        super();
+    }
     public String getCustomerId() {
 
         return customerId;

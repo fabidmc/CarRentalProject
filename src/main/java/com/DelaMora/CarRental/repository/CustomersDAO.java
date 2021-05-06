@@ -10,11 +10,11 @@ import java.util.Optional;
 public interface CustomersDAO extends JpaRepository<Customers, String> {
 
 
-        @Query(value = "SELECT u from CUSTOMERS u where u.customerId = ?1")
+        @Query(value = "SELECT from CUSTOMERS as u where u.customerId = ?1",nativeQuery = true)
         Optional<Customers> findByCustomerId(String customerId);
 
-        @Query(value = "SELECT u from CUSTOMERS u where u.lastName = ?1")
+        @Query(value = "SELECT from CUSTOMERS as u where u.lastName = ?1",nativeQuery = true)
         Optional<Customers> findByLastName(String lastName);
 
 
-    }
+}

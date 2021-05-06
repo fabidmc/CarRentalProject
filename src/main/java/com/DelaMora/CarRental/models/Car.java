@@ -1,10 +1,11 @@
 package com.DelaMora.CarRental.models;
 
+//import org.springframework.data.relational.core.mapping.Table;
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "CAR")
-@Table(name = "CAR")
+@Table(name ="CAR")
 public class Car implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +39,10 @@ public class Car implements Serializable {
         this.CatId = CatId;
         this.pricePerDay = pricePerDay;
         this.available = available;
+    }
+
+    public Car(){
+        super();
     }
 
     public String getCarId() {

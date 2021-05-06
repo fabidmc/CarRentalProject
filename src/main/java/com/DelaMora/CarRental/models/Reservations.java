@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-@Entity
+@Entity(name = "RESERVATION")
 @Table(name = "RESERVATION")
 
 public class Reservations implements Serializable {
@@ -45,6 +45,10 @@ public class Reservations implements Serializable {
         this.totalAmount = totalAmount;
         this.pickDate = pickDate;
         this.returnDate = returnDate;
+    }
+
+    public Reservations(){
+        super();
     }
 
     public static long getSerialVersionUID() {

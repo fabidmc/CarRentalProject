@@ -11,12 +11,17 @@ import java.util.Optional;
 
 public interface ReservationDAO extends JpaRepository<Reservations, String> {
 
-    @Query(value = "SELECT u from RESERVATION u where u.pickDate = ?1")
+    @Query(value = "SELECT from RESERVATION as u where u.pickDate = ?1",nativeQuery = true)
     List<Reservations> findByDate(LocalDateTime pickDate);
 
-    @Query(value = "SELECT u from RESERVATION u where u.customers.customerId = ?1")
+    @Query(value = "SELECT from RESERVATION as u where u.customers.customerId = ?1",nativeQuery = true)
     Optional<Reservations> findByCustomerId(String customerId);
 
-    @Query(value = "SELECT u from RESERVATION u where u.car.carId = ?1")
+    @Query(value = "SELECT from RESERVATION as u where u.car.carId = ?1",nativeQuery = true)
     Optional<Reservations> findByCarId(String carId);
+
+
+
+
+
 }

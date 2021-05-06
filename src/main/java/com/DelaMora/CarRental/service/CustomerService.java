@@ -1,29 +1,17 @@
 package com.DelaMora.CarRental.service;
 
 import com.DelaMora.CarRental.models.Customers;
-import com.DelaMora.CarRental.repository.CustomersDAO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.Optional;
+import java.util.List;
 
-@Service("CustomerService")
-@Transactional
+public interface CustomerService {
 
-public class CustomerService {
+    public List<Customers> findAll();
 
-    @Autowired
-    private CustomersDAO customersDAO;
+    public void save(Customers customers);
 
-    public Optional<Customers> getCustomerbyId(String customerId){
-        return customersDAO.findByCustomerId(customerId);
+    public void delete(Customers customers);
 
-    }
-
-    public Optional<Customers> getCustomerbyLastName(String lastName){
-        return customersDAO.findByLastName(lastName);
-    }
 
 
 }

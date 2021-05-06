@@ -30,6 +30,9 @@ public class Category implements Serializable {
         this.CatDesc = catDesc;
     }
 
+    public Category(){
+        super();
+    }
     public Long getCatId() {
 
         return CatId;

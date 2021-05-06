@@ -2,7 +2,7 @@ package com.DelaMora.CarRental.controllers;
 
 
 import com.DelaMora.CarRental.models.Reservations;
-import com.DelaMora.CarRental.service.ReservationService;
+import com.DelaMora.CarRental.service.ImpReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
     public class ReservationController {
 
     @Autowired
-    private ReservationService reservationService;
+    private ImpReservationService impReservationService;
 
 
    // @GetMapping( path = "pickDate/{date}")
@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
     @GetMapping(path = "CustomerId/{customerId}")
     public ResponseEntity<Reservations> findByCustomerId(@PathVariable String customerId){
 
-        if (reservationService.getReservationByCustomerId(customerId).isPresent()) {
-            return new ResponseEntity<Reservations>(reservationService.getReservationByCustomerId(customerId).get(), HttpStatus.OK);
+        if (impReservationService.getReservationByCustomerId(customerId).isPresent()) {
+            return new ResponseEntity<Reservations>(impReservationService.getReservationByCustomerId(customerId).get(), HttpStatus.OK);
         }
         return new ResponseEntity<Reservations>(HttpStatus.NOT_FOUND);
     }
@@ -39,8 +39,8 @@ import org.springframework.web.bind.annotation.RestController;
     @GetMapping(path = "CarId/{carId}")
     public ResponseEntity<Reservations> findByCarId(@PathVariable String carId){
 
-        if (reservationService.getReservationByCarId(carId).isPresent()) {
-            return new ResponseEntity<Reservations>(reservationService.getReservationByCarId(carId).get(), HttpStatus.OK);
+        if (impReservationService.getReservationByCarId(carId).isPresent()) {
+            return new ResponseEntity<Reservations>(impReservationService.getReservationByCarId(carId).get(), HttpStatus.OK);
         }
         return new ResponseEntity<Reservations>(HttpStatus.NOT_FOUND);
     }

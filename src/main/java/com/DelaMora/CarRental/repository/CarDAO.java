@@ -10,15 +10,19 @@ import java.util.Optional;
 public interface CarDAO extends JpaRepository<Car,String> {
 
 
-    @Query(value = "SELECT c from CAR c where c.carId = ?1")
+    @Query(value = "SELECT from CAR as c where c.carId = ?1",nativeQuery = true)
     Optional<Car> findById(String carId);
 
 
-    @Query(value = "SELECT c from CAR c where c.CatId = ?1")
+    @Query(value = "SELECT from CAR as c where c.CatId = ?1",nativeQuery = true)
     List<Car> findByCategory(String CatId);
 
-    @Query(value = "SELECT c from CAR c where c.brand = ?1")
+    @Query(value = "SELECT from CAR as c where c.brand = ?1",nativeQuery = true)
     List<Car> findByBrand(String brand);
+
+
+
+
 
 
 
