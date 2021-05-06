@@ -12,21 +12,20 @@ public class Reservations implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Column(name = "RESERVATION_ID")
+    @Column(name = "ReservationId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ReservId;
+    private String BookingId;
 
-    @ManyToOne(targetEntity = Customers.class)
-    @JoinColumn(name="CUSTOMER_ID")
+    @OneToOne(targetEntity = Customers.class)
+    @JoinColumn(name="CustomerId")
     private Customers customerId ;
 
-    @ManyToOne(targetEntity = Car.class)
-    @JoinColumn(name="CAR_ID")
+    @OneToOne(targetEntity = Car.class)
+    @JoinColumn(name="CarId")
     private Category carId ;
 
-
-    @ManyToOne(targetEntity = Category.class)
-    @JoinColumn(name="ID_CATEGORY")
+    @OneToOne(targetEntity = Category.class)
+    @JoinColumn(name="CatId")
     private Category CatId ;
 
     @Column(name = "AMOUNT")
@@ -38,17 +37,26 @@ public class Reservations implements Serializable {
     @Column(name = "RETURNDATE")
     private LocalDateTime returnDate;
 
+    public Reservations(String bookingId, Customers customerId, Category carId, Category catId, Integer totalAmount, LocalDateTime pickDate, LocalDateTime returnDate) {
+        BookingId = bookingId;
+        this.customerId = customerId;
+        this.carId = carId;
+        CatId = catId;
+        this.totalAmount = totalAmount;
+        this.pickDate = pickDate;
+        this.returnDate = returnDate;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public Long getReservId() {
-        return ReservId;
+    public String getBookingId() {
+        return BookingId;
     }
 
-    public void setReservId(Long reservId) {
-        ReservId = reservId;
+    public void setBookingId(String bookingId) {
+        BookingId = bookingId;
     }
 
     public Customers getCustomerId() {
@@ -71,8 +79,8 @@ public class Reservations implements Serializable {
         return CatId;
     }
 
-    public void setCatId(Category catId) {
-        CatId = catId;
+    public void setCatId(Category CatId) {
+        this.CatId= CatId;
     }
 
     public Integer getTotalAmount() {
@@ -102,7 +110,7 @@ public class Reservations implements Serializable {
     @Override
     public String toString() {
         return "Reservations{" +
-                "ReservId=" + ReservId +
+                "BookingId=" + BookingId +
                 ", customerId=" + customerId +
                 ", carId=" + carId +
                 ", CatId=" + CatId +

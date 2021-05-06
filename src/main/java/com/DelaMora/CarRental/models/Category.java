@@ -15,10 +15,9 @@ public class Category implements Serializable {
 
 
     @Id
-    @Column(name = "ID_CATEGORY")
+    @Column(name = "CatId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CatId;
-
 
     @Column(name = "TYPE")
     private String Type;
@@ -32,11 +31,13 @@ public class Category implements Serializable {
     }
 
     public Long getCatId() {
+
         return CatId;
     }
 
-    public void setCatId(Long catId) {
-        CatId = catId;
+    public void setCatId(Long CatId) {
+
+        this.CatId = CatId;
     }
 
     public static long getSerialVersionUID() {
@@ -62,7 +63,8 @@ public class Category implements Serializable {
     @Override
     public String toString() {
         return "Category{" +
-                "Type='" + Type + '\'' +
+                "CatId="+ CatId +
+                ",Type='" + Type + '\'' +
                 ", CatDesc='" + CatDesc + '\'' +
                 '}';
     }

@@ -1,9 +1,6 @@
 package com.DelaMora.CarRental.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 
@@ -14,32 +11,42 @@ public class Customers implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "CUSTOMER_ID", nullable = false)
+    @Column(name = "CustomerId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String customerId;
-
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    @Column(name = "FIRSTNAME", nullable = false)
-    private String FIRSTNAME;
+    @Column(name = "FIRSTNAME")
+    private String firstName;
 
-    @Column(name = "LASTNAME", nullable = false)
-    private String LASTNAME;
+    @Column(name = "LASTNAME")
+    private String lastName;
 
-    @Column(name = "MOBILE", nullable = false)
-    private String MOBILE;
+    @Column(name = "MOBILE")
+    private String mobile;
 
-    @Column(name = "STATE", nullable = false)
-    private String STATE;
+    @Column(name = "STATE")
+    private String state;
 
-    @Column(name = "COUNTRY", nullable = false)
-    private String COUNTRY;
+    @Column(name = "COUNTRY")
+    private String country;
 
     @Column(name = "EMAIL")
-    private String EMAIL;
+    private String email;
 
+
+    public Customers(String customerId, String firstName, String lastName, String mobile, String state, String country, String email) {
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mobile = mobile;
+        this.state = state;
+        this.country = country;
+        this.email = email;
+    }
 
     public String getCustomerId() {
 
@@ -51,76 +58,65 @@ public class Customers implements Serializable {
         this.customerId = customerId;
     }
 
-    public String getFIRSTNAME() {
 
-        return FIRSTNAME;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFIRSTNAME(String FIRSTNAME) {
-
-        this.FIRSTNAME = FIRSTNAME;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLASTNAME() {
-
-        return LASTNAME;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLASTNAME(String LASTNAME) {
-
-        this.LASTNAME = LASTNAME;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getMOBILE() {
-
-        return MOBILE;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setMOBILE(String MOBILE) {
-
-        this.MOBILE = MOBILE;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getSTATE() {
-
-        return STATE;
+    public String getState() {
+        return state;
     }
 
-    public void setSTATE(String STATE) {
-
-        this.STATE = STATE;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public String getCOUNTRY() {
-
-        return COUNTRY;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCOUNTRY(String COUNTRY) {
-
-        this.COUNTRY = COUNTRY;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public String getEMAIL() {
-
-        return EMAIL;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEMAIL(String EMAIL) {
-
-        this.EMAIL = EMAIL;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
-        return "CUSTOMERS{" +
-                "customerId=" + customerId +
-                ", FIRSTNAME='" + FIRSTNAME + '\'' +
-                ", LASTNAME='" + LASTNAME + '\'' +
-                ", MOBILE='" + MOBILE + '\'' +
-                ", STATE='" + STATE + '\'' +
-                ", COUNTRY='" + COUNTRY + '\'' +
-                ", EMAIL='" + EMAIL + '\'' +
+        return "Customers{" +
+                "customerId='" + customerId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

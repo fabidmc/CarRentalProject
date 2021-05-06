@@ -3,16 +3,16 @@ package com.DelaMora.CarRental.models;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+@Entity(name = "CAR")
 @Table(name = "CAR")
 public class Car implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "CAR_ID")
+    @Column(name = "CarId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long carId;
+    private String carId;
 
     @Column(name = "BRAND")
     private String brand;
@@ -21,21 +21,32 @@ public class Car implements Serializable {
     private String model;
 
     @ManyToOne(targetEntity = Category.class)
-    @JoinColumn(name="ID_CATEGORY")
-    private Category CatId ;
+    @JoinColumn(name="CatId")
+    private Category CatId;
 
     @Column(name = "PRICE")
     private Integer pricePerDay;
 
     @Column(name = "AVAILABILITY")
-    private boolean av;
+    private String available;
 
 
-    public Long getCarId() {
+    public Car(String carId, String brand, String model, Category CatId, Integer pricePerDay, String available) {
+        this.carId = carId;
+        this.brand = brand;
+        this.model = model;
+        this.CatId = CatId;
+        this.pricePerDay = pricePerDay;
+        this.available = available;
+    }
+
+    public String getCarId() {
+
         return carId;
     }
 
-    public void setCarId(Long carId) {
+    public void setCarId(String carId) {
+
         this.carId = carId;
     }
 
@@ -55,13 +66,12 @@ public class Car implements Serializable {
         this.model = model;
     }
 
-
     public Category getCatId() {
         return CatId;
     }
 
-    public void setCatId(Category catId) {
-        CatId = catId;
+    public void setCatId(Category CatId) {
+        this.CatId = CatId;
     }
 
     public Integer getPricePerDay() {
@@ -73,12 +83,12 @@ public class Car implements Serializable {
     }
 
 
-    public boolean isAv() {
-        return av ;
+    public String isAvailable() {
+        return available ;
     }
 
-    public void setAv(boolean av) {
-        this.av = av;
+    public void setAvailable(String av) {
+        this.available = available;
     }
 
     @Override
@@ -87,9 +97,9 @@ public class Car implements Serializable {
                 "carId=" + carId +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
-                ", CatId=" + CatId +
+                ", category=" + CatId +
                 ", pricePerDay=" + pricePerDay +
-                ", av=" + av +
+                ", available=" + available +
                 '}';
     }
 }
