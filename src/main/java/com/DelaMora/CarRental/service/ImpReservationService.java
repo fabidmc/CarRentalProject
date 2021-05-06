@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Service("ReservationService")
 @Transactional
-public class ImpReservationService {
+public class ImpReservationService implements ReservationService {
 
     @Autowired
     ReservationDAO reservationDAO;
@@ -29,6 +29,12 @@ public class ImpReservationService {
     public Optional<Reservations> getReservationByCarId(String carId){
         return reservationDAO.findByCarId(carId);
     }
+
+    @Override
+    public void addReservation(Reservations reservations){
+        reservationDAO.save(reservations);
+    }
+
 
 
 }

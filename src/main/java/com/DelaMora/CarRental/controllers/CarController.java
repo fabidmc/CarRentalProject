@@ -5,20 +5,32 @@ import com.DelaMora.CarRental.service.ImpCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping(path = "/Cars" )
 
 public class CarController {
 
     @Autowired
     private ImpCarService ImpCarService;
+
+    @GetMapping("/Fleet")
+    public String showFleet(HttpSession session, Model model) {
+
+        if (session.getAttribute("fleet") == null) {
+            session.setAttribute("fleet", ImpCarService.findAll());
+        }
+        return "fleet/index";
+    }
+
 
     @GetMapping( path = "carId/{id}")
     public ResponseEntity<Car> findById(@PathVariable String carId) {
@@ -38,6 +50,7 @@ public class CarController {
     public ResponseEntity<List<Car>> findByBrand(@PathVariable String brand){
         return new ResponseEntity<>(ImpCarService.getCarbyBrand(brand),HttpStatus.OK);
     }
+
 
 
 
