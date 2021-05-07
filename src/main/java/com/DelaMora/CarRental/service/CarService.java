@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface CarService {
 
-    public List<Car> findAll();
+    List<Car> findAll();
 
-    public void addNewCar(Car car);
+    void addNewCar(Car car);
 
-    public void updateCar(Car car);
+    void updateCar(Car car);
 
-    public void deleteCar(String carId);
+    void deleteCar(String carId);
 
 
 }

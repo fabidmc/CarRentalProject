@@ -42,19 +42,21 @@ import java.util.Optional;
 
         @Override
         public void addNewCar(Car car){
-            car.setAvailable("YES");
+            //car.setAvailable("YES");
             carDAO.save(car);
         }
 
-        @Override
-        public void updateCar(Car car) {
-            carDAO.save(car);
-        }
 
         @Override
         public void deleteCar(String carId) {
             carDAO.deleteById(carId);
         }
+
+        @Override
+        public void updateCar(Car car){
+            carDAO.save(car);
+        }
+
 
 
 }

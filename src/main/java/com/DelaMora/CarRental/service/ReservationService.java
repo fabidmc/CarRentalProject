@@ -5,7 +5,9 @@ import com.DelaMora.CarRental.models.Reservations;
 public interface ReservationService {
 
 
-    public void addReservation(Reservations reservations);
+   void addReservation(Reservations reservations);
+
+   void deleteReservation(String BookingId);
 
 
 

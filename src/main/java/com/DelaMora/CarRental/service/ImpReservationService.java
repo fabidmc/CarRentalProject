@@ -30,9 +30,18 @@ public class ImpReservationService implements ReservationService {
         return reservationDAO.findByCarId(carId);
     }
 
+    public Optional<Reservations> getReservationById(String BookingId){
+        return reservationDAO.findById(BookingId);
+    }
+
     @Override
     public void addReservation(Reservations reservations){
         reservationDAO.save(reservations);
+    }
+
+    @Override
+    public void deleteReservation(String BookingId){
+        reservationDAO.deleteById(BookingId);
     }
 
 

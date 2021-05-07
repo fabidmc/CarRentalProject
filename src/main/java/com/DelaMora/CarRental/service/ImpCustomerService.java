@@ -34,13 +34,13 @@ public class ImpCustomerService implements CustomerService{
 
 
     @Override
-    public void save(Customers customers){
+    public void addClient(Customers customers){
         customersDAO.save(customers);
     }
 
 
     @Override
-    public void delete(Customers customers) {
+    public void deleteClient(Customers customers) {
         customersDAO.delete(customers);
     }
 

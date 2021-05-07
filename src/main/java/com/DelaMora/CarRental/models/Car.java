@@ -1,6 +1,8 @@
 package com.DelaMora.CarRental.models;
 
 //import org.springframework.data.relational.core.mapping.Table;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -32,7 +34,8 @@ public class Car implements Serializable {
     private String available;
 
 
-    public Car(String carId, String brand, String model, Category CatId, Integer pricePerDay, String available) {
+    public Car(@JsonProperty("Id") String carId,
+               @JsonProperty("brand") String brand, String model, Category CatId, Integer pricePerDay, String available) {
         this.carId = carId;
         this.brand = brand;
         this.model = model;

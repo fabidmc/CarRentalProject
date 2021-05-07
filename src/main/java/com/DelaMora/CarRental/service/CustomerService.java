@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CustomerService {
 
-    public List<Customers> findAll();
+    List<Customers> findAll();
 
-    public void save(Customers customers);
+    void addClient(Customers customers);
 
-    public void delete(Customers customers);
+    void deleteClient(Customers customers);
 
 
 
