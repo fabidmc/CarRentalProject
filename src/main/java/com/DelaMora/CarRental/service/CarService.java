@@ -3,16 +3,16 @@ package com.DelaMora.CarRental.service;
 import com.DelaMora.CarRental.models.Car;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CarService {
 
     List<Car> findAll();
-
-    void addNewCar(Car car);
-
+    Optional<Car> findById(Long carId);
+    Car saveCar(Car car);
     void updateCar(Car car);
-
-    void deleteCar(String carId);
-
+    void deleteCar(Long carId);
 
 }
+
+

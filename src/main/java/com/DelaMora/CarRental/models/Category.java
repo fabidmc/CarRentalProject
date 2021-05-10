@@ -1,74 +1,59 @@
 package com.DelaMora.CarRental.models;
-
-
 import javax.persistence.*;
-import java.io.Serializable;
-
 
 
 @Entity
-@Table(name = "CAR_TYPE")
+@Table(name = "categories_cars")
+public class Category {
 
-public class Category implements Serializable {
+    private static final long serialVersionUID= 7034352443015914334L;
 
-    private static final long serialVersionUID = 1L;
-
-
-    @Id
-    @Column(name = "CatId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CatId;
-
-    @Column(name = "TYPE")
-    private String Type;
-
-    @Column(name = "CAT_DESC")
-    private String CatDesc;
-
-    public Category(String Type, String catDesc) {
-        this.Type = Type;
-        this.CatDesc = catDesc;
-    }
-
-    public Category(){
+    public Category() {
         super();
     }
-    public Long getCatId() {
 
-        return CatId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id")
+    private Long idCategory;
+
+    @Column(name = "type_cars")
+    private String Type;
+
+    private String description;
+
+    public Category(Long idCategory, String type, String description) {
+        this.setIdCategory(idCategory);
+        this.setType(type);
+        this.setDescription(description);
     }
 
-    public void setCatId(Long CatId) {
-
-        this.CatId = CatId;
+    public Long getIdCategory() {
+        return idCategory;
     }
 
-    public static long getSerialVersionUID() {
-
-        return serialVersionUID;
+    public void setIdCategory(Long idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public void setType(String Type) {
-
-        this.Type = Type;
+    public String getType() {
+        return Type;
     }
 
-    public String getCatDesc() {
-
-        return CatDesc;
+    public void setType(String type) {
+        Type = type;
     }
 
-    public void setCatDesc(String catDesc) {
-
-        this.CatDesc = catDesc;
+    public String getDescription() {
+        return description;
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "CatId="+ CatId +
-                ",Type='" + Type + '\'' +
-                ", CatDesc='" + CatDesc + '\'' +
-                '}';
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+
 }
+
+
+

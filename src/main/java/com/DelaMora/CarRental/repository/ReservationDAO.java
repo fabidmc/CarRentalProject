@@ -1,29 +1,30 @@
 package com.DelaMora.CarRental.repository;
 
-import com.DelaMora.CarRental.models.Reservations;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.DelaMora.CarRental.models.Reservation;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 
-public interface ReservationDAO extends JpaRepository<Reservations, String> {
+public interface ReservationDAO extends CrudRepository<Reservation, Long> {
 
-    @Query(value = "SELECT u from RESERVATION as u where u.pickDate = ?1",nativeQuery = true)
-    List<Reservations> findByDate(LocalDateTime pickDate);
+    @Query(value = "SELECT r from Reservation r where r.pickDate = ?1")
+   List<Reservation> findByDate(Date pickDate);
 
-    @Query(value = "SELECT u from RESERVATION as u where u.customers.customerId = ?1",nativeQuery = true)
-    Optional<Reservations> findByCustomerId(String customerId);
+    @Query(value = "SELECT r from Reservation r where r.client.lastName = ?1")
+  Optional<Reservation> findByClientName(String lastName);
 
-    @Query(value = "SELECT u from RESERVATION as u where u.car.carId = ?1",nativeQuery = true)
-    Optional<Reservations> findByCarId(String carId);
+    @Query(value = "SELECT r from Reservation r where r.car.plate = ?1")
+    Optional<Reservation> findByCarPlate(String plate);
 
-    @Query(value = "SELECT u from RESERVATION as u where u.ReservationId = ?1",nativeQuery = true)
-    Optional<Reservations> findById(String BookingId);
 
 
 
 
 }
+
+
+

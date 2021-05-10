@@ -1,49 +1,54 @@
 package com.DelaMora.CarRental.service;
 
-
-import com.DelaMora.CarRental.models.Reservations;
+import com.DelaMora.CarRental.models.Reservation;
 import com.DelaMora.CarRental.repository.ReservationDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@Service("ReservationService")
-@Transactional
+@Service
 public class ImpReservationService implements ReservationService {
 
     @Autowired
     ReservationDAO reservationDAO;
 
-    public List<Reservations> getReservationByDate(LocalDateTime pickDate){
+    @Transactional(readOnly = true)
+    public List<Reservation> getByDate(Date pickDate){
         return reservationDAO.findByDate(pickDate);
     }
 
-    public Optional<Reservations> getReservationByCustomerId(String customerId){
-        return reservationDAO.findByCustomerId(customerId);
+    public Optional<Reservation> findByClientName(String lastName) {
+        return reservationDAO.findByClientName(lastName);
     }
 
-    public Optional<Reservations> getReservationByCarId(String carId){
-        return reservationDAO.findByCarId(carId);
-    }
-
-    public Optional<Reservations> getReservationById(String BookingId){
-        return reservationDAO.findById(BookingId);
+    public Optional<Reservation> getReservationByCarPlate(String plate){
+        return reservationDAO.findByCarPlate(plate);
     }
 
     @Override
-    public void addReservation(Reservations reservations){
-        reservationDAO.save(reservations);
+    @Transactional
+    public Optional<Reservation> findByNumReservation(Long idReservation){
+        return reservationDAO.findById(idReservation);
     }
 
     @Override
-    public void deleteReservation(String BookingId){
-        reservationDAO.deleteById(BookingId);
+    @Transactional
+    public void saveReservation(Reservation reservation){
+        reservationDAO.save(reservation);
+    }
+
+    @Override
+    @Transactional
+    public void deleteReservation(Long idReservation){
+        reservationDAO.deleteById(idReservation);
     }
 
 
 
 }
+
+

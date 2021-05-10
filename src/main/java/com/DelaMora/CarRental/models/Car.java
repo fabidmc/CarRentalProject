@@ -1,61 +1,67 @@
 package com.DelaMora.CarRental.models;
-
-//import org.springframework.data.relational.core.mapping.Table;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import java.io.Serializable;
+//import javax.validation.constraints.NotEmpty;
 
-@Entity(name = "CAR")
-@Table(name ="CAR")
+@Entity
+@Table(name = "cars")
 public class Car implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID= 7034352443015914334L;
 
-    @Id
-    @Column(name = "CarId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String carId;
-
-    @Column(name = "BRAND")
-    private String brand;
-
-    @Column(name = "MODEL")
-    private String model;
-
-    @ManyToOne(targetEntity = Category.class)
-    @JoinColumn(name="CatId")
-    private Category CatId;
-
-    @Column(name = "PRICE")
-    private Integer pricePerDay;
-
-    @Column(name = "AVAILABILITY")
-    private String available;
-
-
-    public Car(@JsonProperty("Id") String carId,
-               @JsonProperty("brand") String brand, String model, Category CatId, Integer pricePerDay, String available) {
-        this.carId = carId;
-        this.brand = brand;
-        this.model = model;
-        this.CatId = CatId;
-        this.pricePerDay = pricePerDay;
-        this.available = available;
-    }
-
-    public Car(){
+    public Car() {
         super();
     }
 
-    public String getCarId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long carId;
 
+    @Column(length = 50)
+    private String plate;
+
+    @Column
+    private String brand;
+
+    @Column
+    private String model;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+
+    @Column(name = "prices")
+    private Integer pricePerDay;
+
+    @Column
+    private boolean available;
+
+
+    public Car(Long carId, String plate, String brand, String model, Category category, Integer pricePerDay, boolean available) {
+        this.setCarId(carId);
+        this.setPlate(plate);
+        this.setBrand(brand);
+        this.setModel(model);
+        this.setCategory(category);
+        this.setPricePerDay(pricePerDay);
+        this.setAvailable(available);
+    }
+
+    public Long getCarId() {
         return carId;
     }
 
-    public void setCarId(String carId) {
-
+    public void setCarId(Long carId) {
         this.carId = carId;
+    }
+
+    public String getPlate() {
+        return plate;
+    }
+
+    public void setPlate(String plate) {
+        this.plate = plate;
     }
 
     public String getBrand() {
@@ -74,12 +80,12 @@ public class Car implements Serializable {
         this.model = model;
     }
 
-    public Category getCatId() {
-        return CatId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCatId(Category CatId) {
-        this.CatId = CatId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Integer getPricePerDay() {
@@ -90,27 +96,20 @@ public class Car implements Serializable {
         this.pricePerDay = pricePerDay;
     }
 
-
-    public String isAvailable() {
-        return available ;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setAvailable(String av) {
+    public void setAvailable(boolean available) {
         this.available = available;
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "carId=" + carId +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", category=" + CatId +
-                ", pricePerDay=" + pricePerDay +
-                ", available=" + available +
-                '}';
-    }
+
 }
+
+
+
+
 
 
 
