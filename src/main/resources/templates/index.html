@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}" lang="">
 
 <head>
     <title>Home page</title>
@@ -10,8 +10,8 @@
     <!-- FORM DE BÚSQUEDA -->
     <form class="mt-5 mb-5 row" th:action="@{/}" th:object="${session.reservation}" method="post">
         <div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
-        </div>
 
+        </div>
 
         <div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
             <div class="form-group">
@@ -24,9 +24,6 @@
             <div class="form-group">
                 <label for="returnDate">Delivery date:</label>
                 <input class="form-control" type="date" name="returnDate" id="returnDate" step="1" min="2021-01-01" max="2022-12-01" value="2021-01-01" required>
-                <div th:if="${session.errorDates != null}">
-                    <small class="form-text text-muted" th:text="${session.errorDates}"></small>
-                </div>
             </div>
         </div>
         <div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
@@ -44,13 +41,13 @@
     <div id="carouselHomePage" class="carousel slide carousel-fade pb-5" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/car_ad_01.jpg" class="d-block w-100" alt="random car ad 01">
+                <img src="images/rentcar.jpg" class="d-block w-55" alt="random ad 01">
             </div>
             <div class="carousel-item">
-                <img src="images/car_ad_02.jpg" class="d-block w-100" alt="random car ad 02">
+                <img src="images/pexels-pixabay-164634.jpg" class="d-block w-55" alt="random car ad 02">
             </div>
             <div class="carousel-item">
-                <img src="images/car_ad_03.jpg" class="d-block w-100" alt="random car ad 03">
+                <img src="images/pexels-kelson-downes-1149137.jpg" class="d-block w-55" alt="random car ad 03">
             </div>
         </div>
 

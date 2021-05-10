@@ -1,39 +1,26 @@
-<style>
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #000;
-}
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerFragment">
+    <title th:include=":: #pageTitle">Layout Generic Title</title>
+    <link rel="shortcut icon" type="image/jpg" href="/images/Picture1.jpg"/>
 
-li {
-	float: left;
-}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 
-li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 15px 16px;
-	text-decoration: none;
-}
+    <!-- <link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">	 -->
 
-li a:hover:not (.active ) {
-	background-color: #111;
-}
+</head>
+</html>
 
-.active {
-	background-color: #4CAF50;
-}
-</style>
-
-<ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a href="#Cars">Cars</a></li>
-    <li><a href="#contact">Services</a></li>
-    <li><a href="#about">About Us</a></li>
-</ul>
 
 
 

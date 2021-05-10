@@ -10,32 +10,32 @@ html, body {
 	flex-shrink: none;
 }
 
-.spring-green-ligth {
-	color: #c8d864;
+.spring-yellow {
+	color: #cfb41f;
 }
 
-.spring-green-dark {
-	color: #71ba00;
+.spring-gold {
+	color: #d8bf64;
 }
 
 .btn,
 .btn:active {
-	color: white;
-	background-color: #c8d864;
+	color: wheat;
+	background-color: #d8bf64;
 	border-radius: 0;
-	border-color: #c8d864;
+	border-color: #d8bf64;
 }
 
 .btn:hover {
-	color: white;
-	background-color: #afbd57;
-	border-color: #afbd57;
+	color: black;
+	background-color: #bda957;
+	border-color: #bda957;
 }
 
 /*<!--Bootstrap Custom checkbox-->*/
 .custom-control-input:checked ~.custom-control-label::before {
-	border-color: #afbd57;
-	background-color: #c8d864;
+	border-color: #bda957;
+	background-color: #d8bf64;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
@@ -43,5 +43,5 @@ html, body {
 }
 
 .breadcrumb-item.active{
-	color: #c8d864;
+	color: #9c8c39;
 }

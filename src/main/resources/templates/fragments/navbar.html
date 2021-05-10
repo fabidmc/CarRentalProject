@@ -1,38 +1,23 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen" />
-  <link th:href="@{/css/main.css}" rel="stylesheet" media="screen" />
-  <meta charset="utf-8" />
-</head>
-<body>
-<div class="row" th:fragment="header">
-  <header>
-    <div class="nav">
-      <ul>
-        <li class="home"><a href="../user/homeRedicrect">Home</a></li>
-        <li class="tutorials"><a href="#">Car</a></li>
-        <li class="about"><a href="../vehicle/vehicles">Vehicle</a>
-          <!-- <ul>
-              <li><a href="../vehicle/vehicles">Show All </a></li>
-              <li><a href="../vehicle/add">Add</a></li>
-          </ul> -->
-        </li>
-        <li class="about"><a href="#">Reservation</a>
-          <ul>
-            <li><a href="../reservation/list">Show All </a></li>
-          </ul>
-        </li>
-        <li class="news"><a href="../payment/view-all-payment">Payment</a>
-          <ul>
-            <li><a href="../payment/view-all-payment">Show All</a></li>
-
-          </ul>
-        </li>
-        <li class="contact"><a href="../user/logout">Logout</a></li>
-      </ul>
+<header th:fragment="navbar">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+      <a class="navbar-brand py-0" href="/"> <img src="/images/Picture1.png" width="auto" height="40" alt="Car Rental System Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/showAllCars"> OUR CARS <span class="sr-only">(current)</span></a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto mt-2 mt-md-0">
+          <li class="nav-item">
+            <a class="nav-link pr-0" th:if="${session.client == null}" href="/user/login"><i class="fas fa-user-circle mr-2"></i>Login</a>
+            <a class="nav-link pr-0" th:if="${session.client != null}" href="#"><i class="fas fa-user-circle mr-2"></i><span th:text="${session.client.userName}"></span></a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </header>
-</div>
-</body>
-</html>
+  </nav>
+</header>

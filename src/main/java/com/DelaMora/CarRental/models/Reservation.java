@@ -81,6 +81,7 @@ public class Reservation implements Serializable {
         this.car = car;
     }
 
+
     public Category getCategory() {
         return category;
     }
