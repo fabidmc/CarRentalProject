@@ -28,7 +28,7 @@ import java.util.Optional;
             return carDAO.availableCarsForDate(pickDate);
     }
 
-    @Transactional(readOnly = true)
+        @Transactional(readOnly = true)
         public List<Car> getCarByCategory(String category){
             return carDAO.findByCategory(category);
         }
