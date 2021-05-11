@@ -26,7 +26,7 @@ public class ReservationController {
 
         Reservation rent = (Reservation) session.getAttribute("reservation");
         Car car = (Car) session.getAttribute("car");
-        return "/reservation/confirmation/index";
+        return "reservation/confirmation/index";
     }
 
     @PostMapping("/reservation/confirmation")

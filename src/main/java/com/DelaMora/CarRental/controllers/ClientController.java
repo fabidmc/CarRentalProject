@@ -20,7 +20,7 @@ public class ClientController{
 
     @GetMapping("/reservation/client")
     public String showCustomerDetailsForm () {
-        return "/reservation/client/index";
+        return "reservation/client/index";
         }
 
     @PostMapping ("/reservation/client")
