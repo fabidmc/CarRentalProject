@@ -18,12 +18,12 @@ public class ClientController{
     @Autowired
 	ImpClientService impClientService;
 
-    @GetMapping("/reservation/Client")
+    @GetMapping("/reservation/client")
     public String showCustomerDetailsForm () {
-        return "/reservation/Client/index";
+        return "/reservation/client/index";
         }
 
-    @PostMapping ("/reservation/Client")
+    @PostMapping ("/reservation/client")
     public String loginProcess (@ModelAttribute("login") Login login, HttpSession session) {
 
         Client client = impClientService.getClientByUser(login.getUserName());
@@ -32,27 +32,27 @@ public class ClientController{
         session.setAttribute("client", client);
         } else {
         session.setAttribute("errorUserAuth", "Username or password is wrong!");
-        return "reservation/Client/index";
+        return "reservation/client/index";
         }
-        return "redirect:/reservation/Client";
+        return "redirect:/reservation/client";
         }
 
-        @PostMapping ("/reservation/Client/registration")
+        @PostMapping ("/reservation/client/registration")
         public String clientRegistration (HttpSession session, @ModelAttribute ("registration") Client newClient) {
         if (newClient !=null) {
         if (!exists(newClient)) {
         impClientService.saveClient(newClient);
         } else {
         session.setAttribute("errorUserNameTaken", "Sorry, this Username already exists");
-        return "reservation/Client/index";
+        return "reservation/client/index";
         }
         } else {
         session.setAttribute("errorMessage", "Sorry, make sure to fill all the fields before continue");
-        return "reservation/Client/index";
+        return "reservation/client/index";
         }
         session.setAttribute("client", newClient);
         session.removeAttribute("tempClient");
-        return "redirect:/reservation/Client";
+        return "redirect:/reservation/client";
         }
 
 

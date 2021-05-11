@@ -29,7 +29,7 @@ public class LoginController {
         }
 
         @PostMapping("/user/login")
-        public String loginProcess (HttpServletRequest request, HttpServletResponse response, @ModelAttribute("login") Login login, HttpSession session) {
+        public String loginProcess (HttpServletRequest request, HttpServletResponse response, @org.jetbrains.annotations.NotNull @ModelAttribute("login") Login login, HttpSession session) {
 
         Client client = impClientService.getClientByUser(login.getUserName());
 

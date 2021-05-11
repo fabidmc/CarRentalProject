@@ -8,16 +8,18 @@
 		<version>2.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.DelaMora</groupId>
 	<artifactId>CarRental</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CarRental</name>
 	<description>Car Rental System Project</description>
+
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-	<dependencies>
 
+	<dependencies>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -144,13 +146,19 @@
 			<version>5.4.30.Final</version>
 		</dependency>
 
+
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
-			<version>2.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
 		</dependency>
 
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>

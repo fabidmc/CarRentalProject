@@ -42,8 +42,8 @@ public class CarController {
     @PostMapping("/showAllCars/filter")
     public String filterCarFleet(HttpSession session,
                                  @RequestParam(name="categorySelection") String categoryValue,
-                                 @RequestParam(name="brandSelection") String brandValue,
-                                 @RequestParam(name="priceOrderSelection") String priceOrderValue) {
+                                 @RequestParam(name="brandSelection") String brandValue)
+                                  {
 
         List<Car> allCars = impCarService.findAll();
         List<Car> filteredCars = new ArrayList<Car>();
