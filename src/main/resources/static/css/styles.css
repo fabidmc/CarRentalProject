@@ -20,14 +20,14 @@ html, body {
 
 .btn,
 .btn:active {
-	color: wheat;
+	color: white;
 	background-color: #d8bf64;
 	border-radius: 0;
 	border-color: #d8bf64;
 }
 
 .btn:hover {
-	color: black;
+	color: white;
 	background-color: #bda957;
 	border-color: #bda957;
 }

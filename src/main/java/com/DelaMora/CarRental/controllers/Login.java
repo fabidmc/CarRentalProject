@@ -1,4 +1,4 @@
-package com.DelaMora.CarRental.models;
+package com.DelaMora.CarRental.controllers;
 
 public class Login {
 

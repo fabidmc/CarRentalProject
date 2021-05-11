@@ -1,17 +1,17 @@
 package com.DelaMora.CarRental.controllers;
 
 import com.DelaMora.CarRental.models.Client;
-import com.DelaMora.CarRental.models.Login;
 import com.DelaMora.CarRental.service.ImpClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
-@Controller
+@RestController
 public class ClientController{
 
 

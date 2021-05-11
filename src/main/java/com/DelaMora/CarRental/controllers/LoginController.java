@@ -2,7 +2,6 @@ package com.DelaMora.CarRental.controllers;
 
 
 import com.DelaMora.CarRental.models.Client;
-import com.DelaMora.CarRental.models.Login;
 import com.DelaMora.CarRental.service.ImpClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,11 +25,11 @@ public class LoginController {
 
         @GetMapping("/user/login")
         public String showLoginForm (HttpServletRequest request, HttpServletResponse response, Model model) {
-        return "/user/login/index";
+                return "user/login/index";
         }
 
         @PostMapping("/user/login")
-        public String loginProcess (HttpServletRequest request, HttpServletResponse response, @org.jetbrains.annotations.NotNull @ModelAttribute("login") Login login, HttpSession session) {
+        public String loginProcess (HttpServletRequest request, HttpServletResponse response, @ModelAttribute("login") Login login, HttpSession session) {
 
         Client client = impClientService.getClientByUser(login.getUserName());
 

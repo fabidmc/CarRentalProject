@@ -52,11 +52,6 @@
 
       <tbody>
       <tr class="row mb-3" th:each="car:${session.allCars}">
-        <td class="col-12 col-md-6">
-          <div class="h-100 d-flex align-items-center flex-column p-3">
-            <img style="max-width: 320px;" class="my-auto" th:src="@{${car.photo}}" />
-          </div>
-        </td>
         <td class="col-12 col-md-4">
           <div class="p-3">
             <h2 th:text="${car.brand}"></h2>

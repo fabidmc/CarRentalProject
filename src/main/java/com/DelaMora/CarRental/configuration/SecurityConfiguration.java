@@ -1,11 +1,10 @@
 package com.DelaMora.CarRental.configuration;
 
-import com.DelaMora.CarRental.models.Login;
+import com.DelaMora.CarRental.controllers.Login;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
