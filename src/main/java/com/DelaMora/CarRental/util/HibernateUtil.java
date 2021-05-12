@@ -2,15 +2,12 @@ package com.DelaMora.CarRental.util;
 
 import java.util.Properties;
 
-import com.DelaMora.CarRental.models.typeTransmission;
+import com.DelaMora.CarRental.models.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-
-import com.DelaMora.CarRental.models.Car;
-import com.DelaMora.CarRental.models.Category;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
@@ -37,6 +34,8 @@ public class HibernateUtil {
 
                 configuration.addAnnotatedClass(Car.class);
                 configuration.addAnnotatedClass(Category.class);
+                configuration.addAnnotatedClass(Client.class);
+                configuration.addAnnotatedClass(Reservation.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

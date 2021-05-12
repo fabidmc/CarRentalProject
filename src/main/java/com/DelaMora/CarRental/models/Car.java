@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "cars")
-@Proxy(lazy = false)
 public class Car implements Serializable {
 
     private static final long serialVersionUID= 1L;

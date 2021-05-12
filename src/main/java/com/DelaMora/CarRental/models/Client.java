@@ -12,7 +12,6 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "clients")
-@Proxy(lazy = false)
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;

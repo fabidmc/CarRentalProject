@@ -10,7 +10,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "reservations")
-@Proxy(lazy = false)
 public class Reservation implements Serializable {
 
     private static final long serialVersionUID = 1L;
