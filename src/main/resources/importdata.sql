@@ -1,19 +1,16 @@
-USE db_cars;
-
-
+Use CarsData;
 /* category */
-INSERT INTO categories_cars (category_id, type_cars, description) VALUES (1,'Compact','Car with 5 doors');
-INSERT INTO categories_cars (category_id, type_cars, description) VALUES (2,'Jeep','4x4 vehicle');
-INSERT INTO categories_cars (category_id, type_cars, description) VALUES (3,'Convertible or Luxury','The roof is retractable');
-INSERT INTO categories_cars (category_id, type_cars, description) VALUES (4,'Hatchback','Small car with a flat back-side');
-INSERT INTO categories_cars (category_id, type_cars, description) VALUES (5,'SUV','A mix between a Sedan and a Jeep');
-
+INSERT INTO categories (idCategory, price_day, type_category) VALUES ('1', '1350.0','LUXURY');
+INSERT INTO categories (idCategory, price_day, type_category) VALUES ('2', '800.0','STANDARD');
+INSERT INTO categories (idCategory, price_day, type_category) VALUES ('3', '450.0','ECONOMIC');
 /* cars master data*/
-INSERT INTO cars (car_id, available, brand, model, plate, prices, category_id) VALUES  (001,b'1','Mercedes-Benz','SLK200','ABX1234',1500.00,3);
-INSERT INTO cars (car_id, available, brand, model, plate, prices, category_id) VALUES  (002,b'1','BMW','160i','SDF4567',750.00,1);          
-INSERT INTO cars (car_id, available, brand, model, plate, prices, category_id) VALUES  (003,b'1','Suzuki','Swift','WER3245',450.00,4);          
-INSERT INTO cars (car_id, available, brand, model, plate, prices, category_id) VALUES  (004,b'0','Toyota','Auris','GLZ2376',450.00,4);          
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('1',b'1','Audi',4,'Audi Cabrio',4, 'MANUAL','1');
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('2',b'1','Mercedez-Benz',5,'Mercedes-Benz Clase C',5, 'MANUAL','1');
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('3',b'1','VW',5,'JETTA',5, 'AUTOMATIC','2');
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('4',b'1','Chevrolet',5,'Aveo',5, 'AUTOMATIC','2');
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('5',b'1','Ford',3,'Ford KA',4, 'MANUAL','3');
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('6',b'1','Opel',4,'Opel Corsa',4, 'MANUAL','3');
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('7',b'1','BMW',2,'BMW i8',2, 'AUTOMATIC','1');
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('8',b'1','Toyota',5,'Corolla',5, 'AUTOMATIC','2');
+INSERT INTO cars (car_id,available,brand,doors,model,seats,transmission,type_category) VALUES  ('9',b'1','Peugeot',4,'Peugeot 308',4, 'AUTOMATIC','3');
 
-INSERT INTO clients (id_client,country,email,first_name,last_name,mobile,password,state,user_name) VALUES  (1,'Mexico','fabidmc@gmail.com','Fabiola','De la Mora','+525511486573','1234','Mexico City','fabidmc');
-
-               

@@ -1,59 +1,68 @@
 package com.DelaMora.CarRental.models;
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
-@Table(name = "categories_cars")
-public class Category {
+@Table(name = "categories")
+@Proxy(lazy = false)
+public class Category implements Serializable {
 
-    private static final long serialVersionUID= 7034352443015914334L;
+        private static final long serialVersionUID = 1L;
 
-    public Category() {
-        super();
-    }
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long idCategory;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private Long idCategory;
+        @Column(name = "price_day")
+        private Double pricePerDay;
 
-    @Column(name = "type_cars")
-    private String Type;
+        @Column(name = "type_category")
+        private String typeCategory;
 
-    private String description;
+        public Category(Long idCategory, Double pricePerDay, String typeCategory) {
+            this.idCategory = idCategory;
+            this.pricePerDay = pricePerDay;
+            this.typeCategory = typeCategory;
+        }
 
-    public Category(Long idCategory, String type, String description) {
-        this.setIdCategory(idCategory);
-        this.setType(type);
-        this.setDescription(description);
-    }
+        public Category() {
 
-    public Long getIdCategory() {
-        return idCategory;
-    }
+        }
 
-    public void setIdCategory(Long idCategory) {
-        this.idCategory = idCategory;
-    }
+        public Long getIdCategory() {
+            return idCategory;
+        }
 
-    public String getType() {
-        return Type;
-    }
+        public void setIdCategory(Long idCategory) {
+            this.idCategory = idCategory;
+        }
 
-    public void setType(String type) {
-        Type = type;
-    }
+        public Double getPricePerDay() {
+            return pricePerDay;
+        }
 
-    public String getDescription() {
-        return description;
-    }
+        public void setPricePerDay(Double pricePerDay) {
+            this.pricePerDay = pricePerDay;
+        }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+        public String getTypeCategory() {
+            return typeCategory;
+        }
+
+        public void setTypeCategory(String typeCategory) {
+            this.typeCategory = typeCategory;
+        }
 
 
-}
+        }
+
+
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 package com.DelaMora.CarRental.models;
 
+import org.hibernate.annotations.Proxy;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -9,10 +10,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "reservations")
-
+@Proxy(lazy = false)
 public class Reservation implements Serializable {
 
-    private static final long serialVersionUID = 7034352443015914334L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "id_reservation", unique = true)
@@ -23,11 +24,11 @@ public class Reservation implements Serializable {
     private Client client ;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name="plate")
+    @JoinColumn(name="brand")
     private Car car ;
 
     @OneToOne(targetEntity = Category.class)
-    @JoinColumn(name="category_id")
+    @JoinColumn(name="type_category")
     private Category category ;
 
     @Column(name = "total_amount")
@@ -53,9 +54,7 @@ public class Reservation implements Serializable {
         this.returnDate = returnDate;
     }
 
-    public Reservation(){
-        super();
-    }
+    public Reservation(){}
 
     public Long getIdReservation() {
         return idReservation;

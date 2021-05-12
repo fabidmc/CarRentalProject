@@ -1,6 +1,7 @@
 package com.DelaMora.CarRental.controllers;
 
 import com.DelaMora.CarRental.models.Client;
+import com.DelaMora.CarRental.service.ClientService;
 import com.DelaMora.CarRental.service.ImpClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,30 +19,20 @@ public class ClientController{
     @Autowired
 	ImpClientService impClientService;
 
+    @Autowired
+    ClientService clientService;
+
     @GetMapping("/reservation/client")
     public String showCustomerDetailsForm () {
         return "reservation/client/index";
         }
 
-    @PostMapping ("/reservation/client")
-    public String loginProcess (@ModelAttribute("login") Login login, HttpSession session) {
-
-        Client client = impClientService.getClientByUser(login.getUserName());
-
-        if (null != login && client != null && client.getPassword().equals(login.getPassword())) {
-        session.setAttribute("client", client);
-        } else {
-        session.setAttribute("errorUserAuth", "Username or password is wrong!");
-        return "reservation/client/index";
-        }
-        return "redirect:/reservation/client";
-        }
 
         @PostMapping ("/reservation/client/registration")
         public String clientRegistration (HttpSession session, @ModelAttribute ("registration") Client newClient) {
         if (newClient !=null) {
         if (!exists(newClient)) {
-        impClientService.saveClient(newClient);
+        clientService.addClients(newClient);
         } else {
         session.setAttribute("errorUserNameTaken", "Sorry, this Username already exists");
         return "reservation/client/index";
@@ -57,10 +48,12 @@ public class ClientController{
 
 
         public boolean exists (Client client) {
-        if (impClientService.getClientByUser(client.getUserName()) != null) {
+        if (clientService.findById(client.getIdClient()) != null) {
         return true;
         }
         return false;
         }
 
 }
+
+

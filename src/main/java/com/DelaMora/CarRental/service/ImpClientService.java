@@ -10,47 +10,41 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-
 public class ImpClientService implements ClientService{
 
     @Autowired
     private ClientDAO clientDAO;
 
-    @Transactional
-    public Optional<Client> getClientById(Long idClient){
-        return clientDAO.findByClientId(idClient);
-
-    }
-
-    @Transactional
-    public Optional<Client> getClientByLastName(String lastName){
-        return clientDAO.findByLastName(lastName);
-    }
-
-    @Transactional
-    public Client getClientByUser(String userName){
-        return clientDAO.findByUser(userName);
-    }
-
     @Override
-    @Transactional(readOnly = true)
-    public List<Client> findAll() {
-        return (List<Client>) clientDAO.findAll();
+    public Client findById(Long idClient){
+        return clientDAO.getClientById(idClient);
+
     }
 
 
     @Override
-    @Transactional
-    public void saveClient(Client client){
-        clientDAO.save(client);
+    public List<Client> findAllClients() {
+       return clientDAO.getAllClients();
     }
+
 
     @Override
-    @Transactional
-    public void deleteClient(Client client) {
-        clientDAO.delete(client);
+    public void addClients(Client client){
+        clientDAO.addClient(client);
     }
 
 
+    @Override
+    public void deleteClients(Long idClient) {
+        clientDAO.deleteClient(idClient);
+    }
+
+
+    @Override
+    public void updateClients(Client client){
+        clientDAO.updateClient(client);
+    }
 }
+
+
 

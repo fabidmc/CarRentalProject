@@ -16,38 +16,38 @@ public class ImpReservationService implements ReservationService {
     @Autowired
     ReservationDAO reservationDAO;
 
-    @Transactional(readOnly = true)
-    public List<Reservation> getByDate(Date pickDate){
-        return reservationDAO.findByDate(pickDate);
+    @Override
+    public Reservation findByDate(Date pickDate){
+        return reservationDAO.getReservationByDate(pickDate);
     }
 
-    public Optional<Reservation> findByClientName(String lastName) {
-        return reservationDAO.findByClientName(lastName);
-    }
 
-    public Optional<Reservation> getReservationByCarPlate(String plate){
-        return reservationDAO.findByCarPlate(plate);
+    @Override
+    @Transactional
+    public Reservation findByNumReservation(Long idReservation){
+        return reservationDAO.getReservationById(idReservation);
     }
 
     @Override
     @Transactional
-    public Optional<Reservation> findByNumReservation(Long idReservation){
-        return reservationDAO.findById(idReservation);
-    }
-
-    @Override
-    @Transactional
-    public void saveReservation(Reservation reservation){
-        reservationDAO.save(reservation);
+    public void addReservation(Reservation reservation){
+        reservationDAO.addReservation(reservation);
     }
 
     @Override
     @Transactional
     public void deleteReservation(Long idReservation){
-        reservationDAO.deleteById(idReservation);
+        reservationDAO.deleteReservation(idReservation);
+    }
+
+    @Override
+    public void updateReservation(Reservation reservation){
+        reservationDAO.updateReservation(reservation);
     }
 
 
 }
+
+
 
 

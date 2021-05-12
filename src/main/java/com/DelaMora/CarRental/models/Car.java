@@ -1,67 +1,74 @@
 package com.DelaMora.CarRental.models;
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.io.Serializable;
+
 //import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "cars")
+@Proxy(lazy = false)
 public class Car implements Serializable {
 
-    private static final long serialVersionUID= 7034352443015914334L;
-
-    public Car() {
-        super();
-    }
+    private static final long serialVersionUID= 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long carId;
+    @Column(name ="car_id")
+    private Integer carId;
 
-    @Column(length = 50)
-    private String plate;
-
-    @Column
-    private String brand;
-
-    @Column
-    private String model;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_category")
     private Category category;
 
+    @Column(name = "brand")
+    private String brand;
 
-    @Column(name = "prices")
-    private Integer pricePerDay;
+    @Column(name = "model")
+    private String model;
 
-    @Column
-    private boolean available;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "transmission")
+    private typeTransmission transmission;
 
+    @Column(name = "seats")
+    private int seats;
 
-    public Car(Long carId, String plate, String brand, String model, Category category, Integer pricePerDay, boolean available) {
-        this.setCarId(carId);
-        this.setPlate(plate);
-        this.setBrand(brand);
-        this.setModel(model);
-        this.setCategory(category);
-        this.setPricePerDay(pricePerDay);
-        this.setAvailable(available);
+    @Column(name = "doors")
+    private int doors;
+
+    @Column(name = "available")
+    private boolean av;
+
+    public Car() {
     }
 
-    public Long getCarId() {
+    public Car(Integer carId, Category category, String brand, String model, typeTransmission transmission, int seats, int doors, boolean av) {
+        this.carId = carId;
+        this.category = category;
+        this.brand = brand;
+        this.model = model;
+        this.transmission = transmission;
+        this.seats = seats;
+        this.doors = doors;
+        this.av = av;
+    }
+
+    public Integer getCarId() {
         return carId;
     }
 
-    public void setCarId(Long carId) {
+    public void setCarId(Integer carId) {
         this.carId = carId;
     }
 
-    public String getPlate() {
-        return plate;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setPlate(String plate) {
-        this.plate = plate;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getBrand() {
@@ -80,30 +87,37 @@ public class Car implements Serializable {
         this.model = model;
     }
 
-    public Category getCategory() {
-        return category;
+    public typeTransmission getTransmission() {
+        return transmission;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setTransmission(typeTransmission transmission) {
+        this.transmission = transmission;
     }
 
-    public Integer getPricePerDay() {
-        return pricePerDay;
+    public int getSeats() {
+        return seats;
     }
 
-    public void setPricePerDay(Integer pricePerDay) {
-        this.pricePerDay = pricePerDay;
+    public void setSeats(int seats) {
+        this.seats = seats;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public int getDoors() {
+        return doors;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setDoors(int doors) {
+        this.doors = doors;
     }
 
+    public boolean isAv() {
+        return av;
+    }
+
+    public void setAv(boolean av) {
+        this.av = av;
+    }
 
 }
 

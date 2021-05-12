@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
-@Controller
+@RestController
 public class Home {
 
         @GetMapping("/")
