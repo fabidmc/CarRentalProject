@@ -18,7 +18,6 @@ import java.util.concurrent.Callable;
 @Repository
 public class CarDAO {
 
-    private EntityManager entityManager;
 
     public void addCar(Car car) {
         Transaction transaction = null;
@@ -35,12 +34,20 @@ public class CarDAO {
     }
 
 
-    public List<Car> getAllCars() {
+    /*public List<Car> getAllCars() {
         Session currentSession = entityManager.unwrap(Session.class);
        Query<Car> query = currentSession.createQuery("from Car",Car.class);
         List<Car> cars = query.getResultList();
         return cars;
         }
+
+     */
+
+    public List<Car> getAllCars() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Car", Car.class).list();
+        }
+    }
 
 
     public void updateCar(Car car) {

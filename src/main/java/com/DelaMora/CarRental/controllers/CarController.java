@@ -42,6 +42,7 @@ public class CarController {
         return carService.getCarByTransmission(transmission);
     }
 
+
     @PostMapping("/add")
     public ResponseEntity<String> addCar(@RequestBody Car car) {
         carService.addCar(car);
@@ -59,6 +60,7 @@ public class CarController {
         carService.deleteCar(carId);
         return new ResponseEntity<>("Car has been deleted", HttpStatus.OK);
     }
+
 
 }
 

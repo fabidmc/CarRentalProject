@@ -5,27 +5,50 @@ import com.DelaMora.CarRental.service.ClientService;
 import com.DelaMora.CarRental.service.ImpClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
 @RestController
-public class ClientController{
+@RequestMapping("/clients")
+public class ClientController {
 
 
     @Autowired
-	ImpClientService impClientService;
+    ImpClientService impClientService;
 
     @Autowired
     ClientService clientService;
 
-    @GetMapping("/reservation/client")
-    public String showCustomerDetailsForm () {
-        return "reservation/client/index";
-        }
+
+    @GetMapping(path = "/{id}")
+    public Client getClientById(@PathVariable("Id")Long idClient){
+        return clientService.findById(idClient);
+    }
+
+    @PostMapping
+    public void addClient(@RequestBody Client client){
+        clientService.addClients(client);
+        System.out.println("SUCCESSFULLY ADDED");
+    }
+
+    @DeleteMapping(path = "/delete")
+    public void removeClient(@PathVariable("Id")Long idClient){
+        clientService.deleteClients(idClient);
+    }
+
+    @PutMapping("/update")
+    public void updateClient(@RequestBody Client client){
+        clientService.updateClients(client);
+    }
+
+
+
+
+
+}
+
+        /*
 
 
         @PostMapping ("/reservation/client/registration")
@@ -55,5 +78,7 @@ public class ClientController{
         }
 
 }
+
+         */
 
 
