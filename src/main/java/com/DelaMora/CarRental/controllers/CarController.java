@@ -1,20 +1,15 @@
 package com.DelaMora.CarRental.controllers;
 
 import com.DelaMora.CarRental.models.Car;
-import com.DelaMora.CarRental.models.Reservation;
 import com.DelaMora.CarRental.models.typeTransmission;
 import com.DelaMora.CarRental.service.CarService;
 import com.DelaMora.CarRental.service.ImpCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -33,7 +28,7 @@ public class CarController {
     }
 
     @GetMapping("/show/id/{id}")
-    public Car showCarById(@PathVariable("id") int carId) {
+    public List<Car> showCarById(@PathVariable("id") int carId) {
         return carService.getCarById(carId);
     }
 
@@ -42,11 +37,19 @@ public class CarController {
         return carService.getCarByTransmission(transmission);
     }
 
+    @GetMapping("/availableCars")
+    public List<Car> showAvailableCars(HttpSession session, boolean av){
+        if(av!=true) {
+            session.setAttribute("errorUserNameTaken", "Sorry, this Username already exists");
+        }
+        return carService.getAvailableCars(av);
+
+    }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addCar(@RequestBody Car car) {
-        carService.addCar(car);
-        return new ResponseEntity<>("New car has been added", HttpStatus.CREATED);
+    public void addCar(@RequestBody Car car) {
+         carService.addCar(car);
+        //return new ResponseEntity<>("New car has been added", HttpStatus.CREATED);
     }
 
     @PutMapping("/update")

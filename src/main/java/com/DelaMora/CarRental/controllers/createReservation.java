@@ -14,7 +14,7 @@ public class createReservation {
 
         values.add(client.getLastName());
         values.add(client.getEmail());
-        values.add(String.valueOf(rent.getCategory()));
+        values.add(String.valueOf(rent.getTypeCategory()));
 
 
         long result = 17;

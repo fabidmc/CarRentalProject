@@ -15,10 +15,10 @@ public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="car_id")
-    private Integer carId;
+    private int carId;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "type_category")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idCategory")
     private Category category;
 
     @Column(name = "brand")

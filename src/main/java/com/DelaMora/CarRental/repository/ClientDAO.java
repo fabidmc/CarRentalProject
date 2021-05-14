@@ -5,6 +5,7 @@ import com.DelaMora.CarRental.models.Client;
 import com.DelaMora.CarRental.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,9 +18,10 @@ public class ClientDAO {
     public void addClient(Client client) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
+            transaction =session.beginTransaction();
             session.save(client);
-            transaction.commit();
+            session.getTransaction().commit();;
+            //transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -49,20 +51,21 @@ public class ClientDAO {
         }
     }
 
-    public Client getClientById(Long idClient) {
-        Transaction transaction = null;
-        Client client = null;
+    public List<Client> getClientById(Long idClient) {
+        // Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            client = session.get(Client.class, idClient);
-            transaction.commit();
+            Query query = session.createQuery("from Client where idClient=: idClient");
+            query.setParameter("idClient",idClient);
+            return query.list();
+            //  transaction = session.beginTransaction();
+            //  car = session.get(Car.class, carId);
+            // transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            e.printStackTrace();
         }
-        return client;
+        return null;
     }
+
     public void deleteClient(Long idClient) {
         Transaction transaction = null;
         Client client = null;

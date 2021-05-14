@@ -1,5 +1,6 @@
 package com.DelaMora.CarRental.controllers;
 
+import com.DelaMora.CarRental.models.Car;
 import com.DelaMora.CarRental.models.Client;
 import com.DelaMora.CarRental.service.ClientService;
 import com.DelaMora.CarRental.service.ImpClientService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping("/clients")
@@ -21,12 +23,12 @@ public class ClientController {
     ClientService clientService;
 
 
-    @GetMapping(path = "/{id}")
-    public Client getClientById(@PathVariable("Id")Long idClient){
+    @GetMapping(path = "/id/{id}")
+    public List<Client> getClientById(@PathVariable("id")Long idClient){
         return clientService.findById(idClient);
     }
 
-    @PostMapping
+    @PostMapping("/addClient")
     public void addClient(@RequestBody Client client){
         clientService.addClients(client);
         System.out.println("SUCCESSFULLY ADDED");

@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -44,7 +42,7 @@ import java.util.Optional;
 
         @Override
         @Transactional
-        public Car getCarById(int carId){
+        public List<Car> getCarById(int carId){
             return carDAO.getCarById(carId);
         }
 
@@ -52,6 +50,12 @@ import java.util.Optional;
         @Transactional
         public List<Car>  getCarByTransmission(typeTransmission transmission){
             return carDAO.getCarByTransmission(transmission);
+        }
+
+        @Override
+        @Transactional
+        public List<Car> getAvailableCars(boolean av){
+            return carDAO.getAvailableCars(av);
         }
 
 

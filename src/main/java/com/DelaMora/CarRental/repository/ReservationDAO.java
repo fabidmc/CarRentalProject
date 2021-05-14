@@ -6,6 +6,7 @@ import com.DelaMora.CarRental.models.typeTransmission;
 import com.DelaMora.CarRental.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -67,18 +68,18 @@ public class ReservationDAO  {
     }
 
     public Reservation getReservationById(Long idReservation) {
-        Transaction transaction = null;
-        Reservation reservation = null;
+        // Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            reservation = session.get(Reservation.class, idReservation);
-            transaction.commit();
+            Query query = session.createQuery("from Reservation where idReservation=: idReservation");
+            query.setParameter("idReservation", idReservation);
+            return (Reservation) query.getSingleResult();
+            //  transaction = session.beginTransaction();
+            //  car = session.get(Car.class, carId);
+            // transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            e.printStackTrace();
         }
-        return reservation;
+        return null;
     }
 
 

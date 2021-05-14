@@ -15,39 +15,37 @@ public class Reservation implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id_reservation", unique = true)
+    @Column(unique = true)
     private Long idReservation;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name="last_name")
-    private Client client ;
+    @JoinColumn
+    private String lastName ;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name="brand")
-    private Car car ;
+    @JoinColumn(name = "car_id")
+    private int carId ;
 
-    @OneToOne(targetEntity = Category.class)
-    @JoinColumn(name="type_category")
-    private Category category ;
+    @JoinColumn(name = "type_category")
+    private String typeCategory ;
 
-    @Column(name = "total_amount")
-    private Integer totalAmount;
+    @Column
+    private double totalAmount;
 
-    @Column(name = "pick_date")
+    @Column
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date pickDate;
 
-    @Column(name = "return_date")
+    @Column
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date returnDate;
 
-    public Reservation(Long idReservation, Client client, Car car, Category category, Integer totalAmount, Date pickDate, Date returnDate) {
+
+    public Reservation(Long idReservation, String lastName, int carId, String typeCategory, double totalAmount, Date pickDate, Date returnDate) {
         this.idReservation = idReservation;
-        this.client = client;
-        this.car = car;
-        this.category = category;
+        this.lastName = lastName;
+        this.carId = carId;
+        this.typeCategory = typeCategory;
         this.totalAmount = totalAmount;
         this.pickDate = pickDate;
         this.returnDate = returnDate;
@@ -63,36 +61,35 @@ public class Reservation implements Serializable {
         this.idReservation = idReservation;
     }
 
-    public Client getClient() {
-        return client;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public Car getCar() {
-        return car;
+    public int getCarId() {
+        return carId;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarId(int carId) {
+        this.carId = carId;
     }
 
-
-    public Category getCategory() {
-        return category;
+    public String getTypeCategory() {
+        return typeCategory;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setTypeCategory(String typeCategory) {
+        this.typeCategory = typeCategory;
     }
 
-    public Integer getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(Integer totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 

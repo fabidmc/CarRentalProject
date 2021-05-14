@@ -16,7 +16,7 @@ public class ImpClientService implements ClientService{
     private ClientDAO clientDAO;
 
     @Override
-    public Client findById(Long idClient){
+    public List<Client> findById(Long idClient){
         return clientDAO.getClientById(idClient);
 
     }

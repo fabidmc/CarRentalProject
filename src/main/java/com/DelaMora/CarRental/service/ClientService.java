@@ -11,7 +11,7 @@ public interface ClientService {
     void addClients(Client client);
     void updateClients(Client client);
     void deleteClients(Long idClient);
-    Client findById(Long idClient);
+    List<Client> findById(Long idClient);
 
 }
 

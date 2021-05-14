@@ -18,22 +18,26 @@ public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_client")
+    @Column
     private Long idClient;
 
-    @Column(name = "first_name")
+    @Column
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column
     private String lastName;
 
-    @Column(name = "mobile")
+    @Column
     private String mobile;
+
+    @Column
     private String city;
+
+    @Column
     private String country;
 
     @Email(message = "incorrect format")
-    @Column(name = "email")
+    @Column
     private String email;
 
 

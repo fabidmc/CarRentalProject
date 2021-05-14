@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/reservation")
@@ -25,8 +26,8 @@ public class ReservationController {
 
 
     @GetMapping(path="/{Id}")
-    public void getReservationsById(@PathVariable("Id")Long idReservation){
-        reservationService.findByNumReservation(idReservation);
+    public Reservation getReservationsById(@PathVariable("Id")Long idReservation){
+       return reservationService.findByNumReservation(idReservation);
     }
 
     @PostMapping
